@@ -14,14 +14,20 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_user")
-public class User {
+@Table(name = "tb_userJuridico")
+public class UserJuridico {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @NotBlank(message = "Essa campo é obrigatório.")
 
+    @NotBlank(message = "Essa campo é obrigatório.")
     private String name;
+
+    @NotBlank(message = "Essa campo é obrigatório.")
+    private String nameFantasia;
+
+    @NotBlank(message = "Essa campo é obrigatório.")
+    private String razaoSocial;
 
     @Column(unique = true)
     @NotBlank(message = "Essa campo é obrigatório.")
@@ -30,8 +36,10 @@ public class User {
     @NotBlank(message = "Essa campo é obrigatório.")
     private String phoneNumber;
 
+    @NotBlank(message = "Essa campo é obrigatório.")
     private String password;
 
-    private String cpf;
+    @NotBlank(message = "Essa campo é obrigatório.")
+    private String cnpj;
 
 }

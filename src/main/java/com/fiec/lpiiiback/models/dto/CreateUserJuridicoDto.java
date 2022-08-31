@@ -3,10 +3,13 @@ package com.fiec.lpiiiback.models.dto;
 import lombok.Data;
 
 @Data
-public class CreateUserRequestDto {
+public class CreateUserJuridicoDto {
     String name;
+    String nameFantasia;
+    String razaoSocial;
+    String cnpj;
     String email;
-    String password;
     String phoneNumber;
-    String cpf;
+    String password;
+
 }

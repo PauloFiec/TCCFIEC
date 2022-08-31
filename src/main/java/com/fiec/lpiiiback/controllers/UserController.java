@@ -41,6 +41,7 @@ public class UserController {
         return UserDto.convertToUserDto(userService.signUpUser(
                 createUserRequestDto.getName(),
                 createUserRequestDto.getEmail(),
+                createUserRequestDto.getCpf(),
                 createUserRequestDto.getPassword(),
                 createUserRequestDto.getPhoneNumber()
         ));
@@ -98,7 +99,9 @@ public class UserController {
                             .build();
                     userService.signUpUser(newUser.getName(),
                             newUser.getEmail(),
-                            newUser.getPassword(), newUser.getPhoneNumber());
+                            newUser.getCpf(),
+                            newUser.getPassword(),
+                            newUser.getPhoneNumber());
                 }
             } catch (CsvException e) {
                 throw new RuntimeException(e);

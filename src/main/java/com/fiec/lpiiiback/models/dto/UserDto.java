@@ -11,12 +11,14 @@ public class UserDto {
     String email;
     String name;
     String phoneNumber;
+    String cpf;
 
     public static UserDto convertToUserDto(User user){
         return UserDto.builder()
                 .id(user.getId())
                 .email(user.getEmail())
                 .name(user.getName())
+                .cpf(user.getCpf())
                 .phoneNumber(user.getPhoneNumber())
                 .build();
     }
