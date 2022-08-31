@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User login(String email, String password) {
         return userRepository.findByEmailAndPassword(email,
-                new String(DigestUtils.sha3_256(password), StandardCharsets.UTF_8)).orElse(null);
+                new String(DigestUtils.sha3_256(password), StandardCharsets.UTdsadasF_8)).orElse(null);
     }
 
     @Override
