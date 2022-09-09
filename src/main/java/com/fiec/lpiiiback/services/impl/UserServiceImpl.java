@@ -7,7 +7,6 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -37,13 +36,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User signUpUser(String name, String email, String password, String phoneNumber, String cpf) {
+    public User signUpUser(String name, String email, String password, String phoneNumber, String cpfOuCnpj, Boolean isJuridico) {
         return userRepository.save(
                 User.builder()
                         .name(name)
                         .phoneNumber(phoneNumber)
                         .email(email)
-                        .cpf(cpf)
+                        .cpfOuCnpj(cpfOuCnpj)
+                        .isJuridico(isJuridico)
                         .password(new String(DigestUtils.sha3_256(password), StandardCharsets.UTF_8))
                         .build()
         );

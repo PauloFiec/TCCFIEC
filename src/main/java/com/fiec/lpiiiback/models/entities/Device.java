@@ -1,13 +1,28 @@
 package com.fiec.lpiiiback.models.entities;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class Device {
+import javax.persistence.*;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "tb_device")
+public class  Device {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer deviceId;
     private Integer deviceNumber;
+    private Double ip;
+    @ManyToOne
+    private User user;
+    private String nickname;
+
+
 }

@@ -7,7 +7,6 @@ import com.fiec.lpiiiback.models.entities.User;
 import com.fiec.lpiiiback.services.UserService;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
-import net.coobird.thumbnailator.Thumbnails;
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,11 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -43,7 +38,8 @@ public class UserController {
                 createUserRequestDto.getEmail(),
                 createUserRequestDto.getCpf(),
                 createUserRequestDto.getPassword(),
-                createUserRequestDto.getPhoneNumber()
+                createUserRequestDto.getPhoneNumber(),
+                createUserRequestDto.getIsJuridico()
         ));
     }
 
@@ -86,7 +82,7 @@ public class UserController {
     @PostMapping(value="/csv", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void createBulkOfUsers(@RequestParam("csvFile") MultipartFile multipartFile ) throws IOException {
         BufferedReader fileReader = new BufferedReader(new InputStreamReader(multipartFile.getInputStream(), "UTF-8"));
-        final int NAME=0, EMAIL=1, PASSWORD=2, PHONENUMBER=3;
+        final int NAME=0, EMAIL=1, PASSWORD=2, PHONENUMBER=3, CPFOUCNPJ=4, ISJURIDICO=5;
         try (Reader reader = fileReader) {
             try (CSVReader csvReader = new CSVReader(reader)) {
                 List<String[]> csvFields =  csvReader.readAll();
@@ -96,12 +92,15 @@ public class UserController {
                             .name(csvFields.get(i)[NAME])
                             .password(csvFields.get(i)[PASSWORD])
                             .phoneNumber(csvFields.get(i)[PHONENUMBER])
+                            .cpfOuCnpj(csvFields.get(i)[CPFOUCNPJ])
+                            .isJuridico(Boolean.valueOf((csvFields.get(i)[ISJURIDICO])))
                             .build();
                     userService.signUpUser(newUser.getName(),
                             newUser.getEmail(),
-                            newUser.getCpf(),
+                            newUser.getCpfOuCnpj(),
                             newUser.getPassword(),
-                            newUser.getPhoneNumber());
+                            newUser.getPhoneNumber(),
+                            newUser.getIsJuridico());
                 }
             } catch (CsvException e) {
                 throw new RuntimeException(e);

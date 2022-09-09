@@ -1,6 +1,5 @@
 package com.fiec.lpiiiback.models.entities;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,6 +31,7 @@ public class User {
 
     private String password;
 
-    private String cpf;
+    private String cpfOuCnpj;
 
+    private Boolean isJuridico;
 }

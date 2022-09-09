@@ -11,15 +11,17 @@ public class UserDto {
     String email;
     String name;
     String phoneNumber;
-    String cpf;
+    String getCpfOuCnpj;
+    Boolean isJuridico;
 
     public static UserDto convertToUserDto(User user){
         return UserDto.builder()
                 .id(user.getId())
                 .email(user.getEmail())
                 .name(user.getName())
-                .cpf(user.getCpf())
+                .getCpfOuCnpj(user.getCpfOuCnpj())
                 .phoneNumber(user.getPhoneNumber())
+                .isJuridico(user.getIsJuridico())
                 .build();
     }
 }
