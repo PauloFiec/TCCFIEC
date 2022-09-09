@@ -7,6 +7,6 @@ import lombok.Data;
 public class CreateDeviceRequestDto {
     Integer deviceNumber;
     Double ip;
-    User user;
+    User userId;
     String nickname;
 }

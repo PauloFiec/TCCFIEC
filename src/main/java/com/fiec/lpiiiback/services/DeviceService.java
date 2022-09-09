@@ -1,13 +1,13 @@
 package com.fiec.lpiiiback.services;
 
+import com.fiec.lpiiiback.models.dto.CreateDeviceRequestDto;
 import com.fiec.lpiiiback.models.entities.Device;
-import com.fiec.lpiiiback.models.entities.User;
 
 public interface DeviceService {
 
     Device findDevice(String deviceId);
 
-    Device addDevice(Integer deviceNumber, Double ip, User user, String nickname);
+    Device addDevice(CreateDeviceRequestDto createDeviceRequestDto);
 
     Device updateDevice(Integer deviceId, Integer deviceNumber, Double ip, String nickname);
 

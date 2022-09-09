@@ -27,10 +27,7 @@ public class DeviceController {
     public DeviceDto addDevice(@RequestBody CreateDeviceRequestDto createDeviceRequestDto){
 
         return DeviceDto.convertToDeviceDto(deviceService.addDevice(
-                createDeviceRequestDto.getDeviceNumber(),
-                createDeviceRequestDto.getIp(),
-                createDeviceRequestDto.getUser(),
-                createDeviceRequestDto.getNickname()
+                createDeviceRequestDto
         ));
     }
 
@@ -68,31 +65,31 @@ public class DeviceController {
         deviceService.deleteDevice(deviceId);
     }
 
-    @PostMapping(value="/csv", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public void createBulkOfDevice(@RequestParam("csvFile") MultipartFile multipartFile ) throws IOException {
-        BufferedReader fileReader = new BufferedReader(new InputStreamReader(multipartFile.getInputStream(), "UTF-8"));
-        final int DEVICENUMBER=0, IP=1, NICKNAME=2, USER=3;
-        try (Reader reader = fileReader) {
-            try (CSVReader csvReader = new CSVReader(reader)) {
-                List<String[]> csvFields =  csvReader.readAll();
-                for(int i=1; i<csvFields.size(); i++){
-                    Device newDevice = Device.builder()
-                            .deviceNumber(Integer.valueOf(csvFields.get(i)[DEVICENUMBER]))
-                            .ip(Double.valueOf(csvFields.get(i)[IP]))
-                            .nickname(csvFields.get(i)[NICKNAME])
-                            .user(csvFields.get(i)[USER])
-                            .build();
-                    deviceService.addDevice(newDevice.getDeviceNumber(),
-                            newDevice.getIp(),
-                            newDevice.getUser(),
-                            newDevice.getNickname();
-                }
-            } catch (CsvException e) {
-                throw new RuntimeException(e);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    @PostMapping(value="/csv", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public void createBulkOfDevice(@RequestParam("csvFile") MultipartFile multipartFile ) throws IOException {
+//        BufferedReader fileReader = new BufferedReader(new InputStreamReader(multipartFile.getInputStream(), "UTF-8"));
+//        final int DEVICENUMBER=0, IP=1, NICKNAME=2, USER=3;
+//        try (Reader reader = fileReader) {
+//            try (CSVReader csvReader = new CSVReader(reader)) {
+//                List<String[]> csvFields =  csvReader.readAll();
+//                for(int i=1; i<csvFields.size(); i++){
+//                    Device newDevice = Device.builder()
+//                            .deviceNumber(Integer.valueOf(csvFields.get(i)[DEVICENUMBER]))
+//                            .ip(Double.valueOf(csvFields.get(i)[IP]))
+//                            .nickname(csvFields.get(i)[NICKNAME])
+//                            .user(csvFields.get(i)[USER])
+//                            .build();
+//                    deviceService.addDevice(newDevice.getDeviceNumber(),
+//                            newDevice.getIp(),
+//                            newDevice.getUser(),
+//                            newDevice.getNickname();
+//                }
+//            } catch (CsvException e) {
+//                throw new RuntimeException(e);
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
 }
