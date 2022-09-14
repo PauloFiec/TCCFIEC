@@ -40,8 +40,7 @@ public class DeviceController {
 //    }
 
     @GetMapping("/{deviceId}")
-    public DeviceDto getProfile(@PathVariable("deviceId") String deviceId){
-
+    public DeviceDto findDevice(@PathVariable("deviceId") String deviceId){
         return DeviceDto.convertToDeviceDto(deviceService.findDevice(deviceId));
     }
 

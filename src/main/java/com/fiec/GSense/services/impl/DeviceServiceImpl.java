@@ -19,6 +19,7 @@ public class DeviceServiceImpl implements DeviceService {
     @Autowired
     UserRepository userRepository;
 
+    @Override
     public Device findDevice(String deviceId) {
         return deviceRepository.findById(Integer.parseInt(deviceId)).orElseThrow();
     }
