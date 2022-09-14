@@ -1,10 +1,12 @@
-package com.fiec.lpiiiback.controllers;
+package com.fiec.GSense.controllers;
 
-import com.fiec.lpiiiback.models.dto.CreateUserRequestDto;
-import com.fiec.lpiiiback.models.dto.LoginRequestDto;
-import com.fiec.lpiiiback.models.dto.UserDto;
-import com.fiec.lpiiiback.models.entities.User;
-import com.fiec.lpiiiback.services.UserService;
+import com.fiec.GSense.Utils.CustomException;
+import com.fiec.GSense.Utils.ResultCodesException;
+import com.fiec.GSense.models.dto.CreateUserRequestDto;
+import com.fiec.GSense.models.dto.LoginRequestDto;
+import com.fiec.GSense.models.dto.UserDto;
+import com.fiec.GSense.models.entities.User;
+import com.fiec.GSense.services.UserService;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import org.apache.catalina.connector.Response;
@@ -33,6 +35,7 @@ public class UserController {
     @PostMapping
     public UserDto signUpUser(@RequestBody CreateUserRequestDto createUserRequestDto){
 
+        try {
         return UserDto.convertToUserDto(userService.signUpUser(
                 createUserRequestDto.getName(),
                 createUserRequestDto.getEmail(),
@@ -41,6 +44,9 @@ public class UserController {
                 createUserRequestDto.getPhoneNumber(),
                 createUserRequestDto.getIsJuridico()
         ));
+        } catch(Exception ex){
+            throw new CustomException(ResultCodesException.USER_ALREADY_EXISTS);
+        }
     }
 
     @PostMapping("/login")

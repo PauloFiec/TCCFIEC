@@ -1,16 +1,13 @@
-package com.fiec.lpiiiback.services.impl;
+package com.fiec.GSense.services.impl;
 
-import com.fasterxml.jackson.datatype.jsr310.DecimalUtils;
-import com.fiec.lpiiiback.models.dto.CreateDeviceRequestDto;
-import com.fiec.lpiiiback.models.entities.Device;
-import com.fiec.lpiiiback.models.entities.User;
-import com.fiec.lpiiiback.models.repositories.DeviceRepository;
-import com.fiec.lpiiiback.models.repositories.UserRepository;
-import com.fiec.lpiiiback.services.DeviceService;
+import com.fiec.GSense.models.dto.CreateDeviceRequestDto;
+import com.fiec.GSense.models.entities.Device;
+import com.fiec.GSense.models.entities.User;
+import com.fiec.GSense.models.repositories.DeviceRepository;
+import com.fiec.GSense.models.repositories.UserRepository;
+import com.fiec.GSense.services.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class DeviceServiceImpl implements DeviceService {
@@ -35,16 +32,26 @@ public class DeviceServiceImpl implements DeviceService {
                         .ip(createDeviceRequestDto.getIp())
                         .user(currentUser)
                         .nickname(createDeviceRequestDto.getNickname())
+                        .cep(createDeviceRequestDto.getCep())
+                        .rua(createDeviceRequestDto.getRua())
+                        .bairro(createDeviceRequestDto.getBairro())
+                        .numero(createDeviceRequestDto.getNumero())
+                        .descricao(createDeviceRequestDto.getDescricao())
                         .build()
         );
     }
 
     @Override
-    public Device updateDevice(Integer deviceId, Integer deviceNumber, Double ip, String nickname) {
+    public Device updateDevice(Integer deviceId, Integer deviceNumber, Double ip, String nickname, String cep, String rua, String bairro, String numero, String descricao) {
         Device currentDevice = deviceRepository.findById(deviceId).orElseThrow();
         currentDevice.setDeviceNumber(deviceNumber);
         currentDevice.setIp(ip);
         currentDevice.setNickname(nickname);
+        currentDevice.getCep();
+        currentDevice.getRua();
+        currentDevice.getBairro();
+        currentDevice.getNumero();
+        currentDevice.getDescricao();
         return deviceRepository.save(currentDevice);
     }
 

@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.fiec.lpiii-back ' is invalid and this project uses 'com.fiec.lpiiiback' instead.
+* The original package name 'com.fiec.lpiii-back ' is invalid and this project uses 'com.fiec.GSense' instead.
 
 # Getting Started
 

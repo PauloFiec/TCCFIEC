@@ -1,4 +1,4 @@
-package com.fiec.lpiiiback.models.entities;
+package com.fiec.GSense.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,6 +23,10 @@ public class  Device {
     @ManyToOne
     private User user;
     private String nickname;
-
+    private String cep;
+    private String rua;
+    private String bairro;
+    private String numero;
+    private String descricao;
 
 }

@@ -1,4 +1,4 @@
-package com.fiec.lpiiiback;
+package com.fiec.GSense;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

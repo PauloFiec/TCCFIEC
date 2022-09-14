@@ -1,4 +1,4 @@
-package com.fiec.lpiiiback.models.entities;
+package com.fiec.GSense.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

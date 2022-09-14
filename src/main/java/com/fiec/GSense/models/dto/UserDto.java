@@ -1,6 +1,6 @@
-package com.fiec.lpiiiback.models.dto;
+package com.fiec.GSense.models.dto;
 
-import com.fiec.lpiiiback.models.entities.User;
+import com.fiec.GSense.models.entities.User;
 import lombok.Builder;
 import lombok.Data;
 

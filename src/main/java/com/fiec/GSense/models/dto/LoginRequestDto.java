@@ -1,4 +1,4 @@
-package com.fiec.lpiiiback.models.dto;
+package com.fiec.GSense.models.dto;
 
 import lombok.Data;
 

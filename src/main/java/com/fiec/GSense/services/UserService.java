@@ -1,6 +1,6 @@
-package com.fiec.lpiiiback.services;
+package com.fiec.GSense.services;
 
-import com.fiec.lpiiiback.models.entities.User;
+import com.fiec.GSense.models.entities.User;
 
 import java.util.List;
 
