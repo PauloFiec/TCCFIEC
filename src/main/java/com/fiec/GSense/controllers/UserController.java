@@ -41,8 +41,7 @@ public class UserController {
                 createUserRequestDto.getEmail(),
                 createUserRequestDto.getCpf(),
                 createUserRequestDto.getPassword(),
-                createUserRequestDto.getPhoneNumber(),
-                createUserRequestDto.getIsJuridico()
+                createUserRequestDto.getPhoneNumber()
         ));
         } catch(Exception ex){
             throw new CustomException(ResultCodesException.USER_ALREADY_EXISTS);
@@ -88,7 +87,7 @@ public class UserController {
     @PostMapping(value="/csv", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void createBulkOfUsers(@RequestParam("csvFile") MultipartFile multipartFile ) throws IOException {
         BufferedReader fileReader = new BufferedReader(new InputStreamReader(multipartFile.getInputStream(), "UTF-8"));
-        final int NAME=0, EMAIL=1, PASSWORD=2, PHONENUMBER=3, CPFOUCNPJ=4, ISJURIDICO=5;
+        final int NAME=0, EMAIL=1, PASSWORD=2, PHONENUMBER=3, CPFOUCNPJ=4;
         try (Reader reader = fileReader) {
             try (CSVReader csvReader = new CSVReader(reader)) {
                 List<String[]> csvFields =  csvReader.readAll();
@@ -99,14 +98,12 @@ public class UserController {
                             .password(csvFields.get(i)[PASSWORD])
                             .phoneNumber(csvFields.get(i)[PHONENUMBER])
                             .cpfOuCnpj(csvFields.get(i)[CPFOUCNPJ])
-                            .isJuridico(Boolean.valueOf((csvFields.get(i)[ISJURIDICO])))
                             .build();
                     userService.signUpUser(newUser.getName(),
                             newUser.getEmail(),
-                            newUser.getCpfOuCnpj(),
                             newUser.getPassword(),
                             newUser.getPhoneNumber(),
-                            newUser.getIsJuridico());
+                            newUser.getCpfOuCnpj());
                 }
             } catch (CsvException e) {
                 throw new RuntimeException(e);

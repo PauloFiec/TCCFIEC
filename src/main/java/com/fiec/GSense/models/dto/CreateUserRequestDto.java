@@ -9,5 +9,4 @@ public class CreateUserRequestDto {
     String password;
     String phoneNumber;
     String cpf;
-    Boolean isJuridico;
 }

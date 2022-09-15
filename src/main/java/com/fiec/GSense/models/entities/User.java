@@ -32,6 +32,4 @@ public class User {
     private String password;
 
     private String cpfOuCnpj;
-
-    private Boolean isJuridico;
 }

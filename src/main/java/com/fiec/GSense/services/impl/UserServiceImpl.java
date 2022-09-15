@@ -36,14 +36,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User signUpUser(String name, String email, String password, String phoneNumber, String cpfOuCnpj, Boolean isJuridico) {
+    public User signUpUser(String name, String email, String password, String phoneNumber, String cpfOuCnpj) {
         return userRepository.save(
                 User.builder()
                         .name(name)
                         .phoneNumber(phoneNumber)
                         .email(email)
                         .cpfOuCnpj(cpfOuCnpj)
-                        .isJuridico(isJuridico)
                         .password(new String(DigestUtils.sha3_256(password), StandardCharsets.UTF_8))
                         .build()
         );

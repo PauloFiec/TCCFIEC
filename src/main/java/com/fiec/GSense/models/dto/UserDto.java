@@ -12,7 +12,6 @@ public class UserDto {
     String name;
     String phoneNumber;
     String getCpfOuCnpj;
-    Boolean isJuridico;
 
     public static UserDto convertToUserDto(User user){
         return UserDto.builder()
@@ -21,7 +20,6 @@ public class UserDto {
                 .name(user.getName())
                 .getCpfOuCnpj(user.getCpfOuCnpj())
                 .phoneNumber(user.getPhoneNumber())
-                .isJuridico(user.getIsJuridico())
                 .build();
     }
 }
