@@ -10,8 +10,8 @@ public class UserDto {
     Integer id;
     String email;
     String name;
-    String phoneNumber;
     String getCpfOuCnpj;
+    String phoneNumber;
 
     public static UserDto convertToUserDto(User user){
         return UserDto.builder()

@@ -36,14 +36,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User signUpUser(String name, String email, String password, String phoneNumber, String cpfOuCnpj) {
+    public User signUpUser(String name, String email, String password, String cpfOuCnpj, String phoneNumber) {
         return userRepository.save(
                 User.builder()
                         .name(name)
-                        .phoneNumber(phoneNumber)
                         .email(email)
-                        .cpfOuCnpj(cpfOuCnpj)
                         .password(new String(DigestUtils.sha3_256(password), StandardCharsets.UTF_8))
+                        .cpfOuCnpj(cpfOuCnpj)
+                        .phoneNumber(phoneNumber)
                         .build()
         );
     }

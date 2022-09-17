@@ -39,8 +39,8 @@ public class UserController {
         return UserDto.convertToUserDto(userService.signUpUser(
                 createUserRequestDto.getName(),
                 createUserRequestDto.getEmail(),
-                createUserRequestDto.getCpf(),
                 createUserRequestDto.getPassword(),
+                createUserRequestDto.getCpf(),
                 createUserRequestDto.getPhoneNumber()
         ));
         } catch(Exception ex){
