@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class CreateDeviceRequestDto {
     Integer deviceNumber;
-    Double ip;
+    String ip;
     User userId;
     String nickname;
     String cep;

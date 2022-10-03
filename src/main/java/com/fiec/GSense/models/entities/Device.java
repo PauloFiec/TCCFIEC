@@ -19,7 +19,7 @@ public class  Device {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer deviceId;
     private Integer deviceNumber;
-    private Double ip;
+    private String ip;
     @ManyToOne
     private User user;
     private String nickname;
@@ -28,5 +28,6 @@ public class  Device {
     private String bairro;
     private String numero;
     private String descricao;
+
 
 }

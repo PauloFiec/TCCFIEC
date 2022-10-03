@@ -11,9 +11,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @SpringBootApplication
-public class LpiiiBackApplication  {
+public class GSenseApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(LpiiiBackApplication.class, args);
+		SpringApplication.run(GSenseApplication.class, args);
 		try {
 			Files.createDirectory(Paths.get("uploads"));
 		} catch (IOException e) {

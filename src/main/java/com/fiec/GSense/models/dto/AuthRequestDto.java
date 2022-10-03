@@ -3,10 +3,7 @@ package com.fiec.GSense.models.dto;
 import lombok.Data;
 
 @Data
-public class CreateUserRequestDto {
-    String name;
+public class AuthRequestDto {
     String email;
     String password;
-    String phoneNumber;
-    String cpf;
 }

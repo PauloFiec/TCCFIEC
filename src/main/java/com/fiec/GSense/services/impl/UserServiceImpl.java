@@ -42,8 +42,8 @@ public class UserServiceImpl implements UserService {
                         .name(name)
                         .email(email)
                         .password(new String(DigestUtils.sha3_256(password), StandardCharsets.UTF_8))
-                        .cpfOuCnpj(cpfOuCnpj)
                         .phoneNumber(phoneNumber)
+                        .cpfOuCnpj(cpfOuCnpj)
                         .build()
         );
     }

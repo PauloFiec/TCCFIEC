@@ -40,8 +40,9 @@ public class UserController {
                 createUserRequestDto.getName(),
                 createUserRequestDto.getEmail(),
                 createUserRequestDto.getPassword(),
-                createUserRequestDto.getCpf(),
-                createUserRequestDto.getPhoneNumber()
+                createUserRequestDto.getPhoneNumber(),
+                createUserRequestDto.getCpf()
+
         ));
         } catch(Exception ex){
             throw new CustomException(ResultCodesException.USER_ALREADY_EXISTS);

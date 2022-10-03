@@ -9,7 +9,7 @@ public interface DeviceService {
 
     Device addDevice(CreateDeviceRequestDto createDeviceRequestDto);
 
-    Device updateDevice(Integer deviceId, Integer deviceNumber, Double ip, String nickname, String cep, String rua, String bairro, String numero, String descricao);
+    Device updateDevice(Integer deviceId, Integer deviceNumber, String ip, String nickname, String cep, String rua, String bairro, String numero, String descricao);
 
     void deleteDevice(Integer deviceId);
 }

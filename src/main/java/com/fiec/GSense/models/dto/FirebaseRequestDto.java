@@ -1,12 +1,12 @@
 package com.fiec.GSense.models.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class CreateUserRequestDto {
-    String name;
+@Builder
+public class FirebaseRequestDto {
     String email;
     String password;
-    String phoneNumber;
-    String cpf;
+    Boolean returnSecureToken;
 }

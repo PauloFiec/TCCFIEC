@@ -18,8 +18,8 @@ public class UserDto {
                 .id(user.getId())
                 .email(user.getEmail())
                 .name(user.getName())
-                .getCpfOuCnpj(user.getCpfOuCnpj())
                 .phoneNumber(user.getPhoneNumber())
+                .getCpfOuCnpj(user.getCpfOuCnpj())
                 .build();
     }
 }

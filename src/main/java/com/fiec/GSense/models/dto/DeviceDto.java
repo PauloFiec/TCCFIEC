@@ -10,7 +10,7 @@ import lombok.Data;
 public class DeviceDto {
     Integer deviceId;
     Integer deviceNumber;
-    Double ip;
+    String ip;
     User user;
     String nickname;
     String cep;

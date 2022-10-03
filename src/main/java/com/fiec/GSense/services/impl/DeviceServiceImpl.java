@@ -43,7 +43,7 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     @Override
-    public Device updateDevice(Integer deviceId, Integer deviceNumber, Double ip, String nickname, String cep, String rua, String bairro, String numero, String descricao) {
+    public Device updateDevice(Integer deviceId, Integer deviceNumber, String ip, String nickname, String cep, String rua, String bairro, String numero, String descricao) {
         Device currentDevice = deviceRepository.findById(deviceId).orElseThrow();
         currentDevice.setDeviceNumber(deviceNumber);
         currentDevice.setIp(ip);

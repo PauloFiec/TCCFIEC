@@ -8,7 +8,7 @@ public interface UserService {
     User getProfile(String userId);
     User login(String email, String password);
     List<User> getAllUsers();
-    User signUpUser(String name, String email, String password, String cpfOuCnpj, String phoneNumber);
+    User signUpUser(String name, String email, String password,String phoneNumber, String cpfOuCnpj);
     User updateUser(Integer userId, String name, String password, String phoneNumber);
 
     void deleteUser(Integer userId);
