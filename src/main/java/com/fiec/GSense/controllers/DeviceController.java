@@ -4,6 +4,7 @@ import com.fiec.GSense.Utils.CustomException;
 import com.fiec.GSense.Utils.ResultCodesException;
 import com.fiec.GSense.models.dto.*;
 import com.fiec.GSense.models.entities.Device;
+import com.fiec.GSense.models.entities.DeviceInfo;
 import com.fiec.GSense.services.DeviceService;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
@@ -61,12 +62,7 @@ public class DeviceController {
         return DeviceDto.convertToDeviceDto(deviceService.updateDevice(deviceId,
                 createDeviceRequestDto.getDeviceNumber(),
                 createDeviceRequestDto.getIp(),
-                createDeviceRequestDto.getNickname(),
-                createDeviceRequestDto.getCep(),
-                createDeviceRequestDto.getRua(),
-                createDeviceRequestDto.getBairro(),
-                createDeviceRequestDto.getNumero(),
-                createDeviceRequestDto.getDescricao()
+                createDeviceRequestDto.getDeviceInfo()
         ));
     }
 

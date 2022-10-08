@@ -20,14 +20,10 @@ public class  Device {
     private Integer deviceId;
     private Integer deviceNumber;
     private String ip;
+    private Integer status;
+    //power bi
     @ManyToOne
     private User user;
-    private String nickname;
-    private String cep;
-    private String rua;
-    private String bairro;
-    private String numero;
-    private String descricao;
-
-
+    @Embedded
+    private DeviceInfo deviceInfo;
 }
