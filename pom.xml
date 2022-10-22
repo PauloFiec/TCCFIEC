@@ -9,11 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.fiec</groupId>
-	<artifactId>lpiii-back</artifactId>
+	<artifactId>GSense</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>lpiii-back</name>
-	<description>Para aulas de LPIII</description>
+	<name>G-Sense</name>
+	<description>Tcc Fiec</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -48,7 +48,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -63,13 +63,13 @@
 			<version>9.0.0</version>
 		</dependency>
 
-		<!--
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		-->
+
 
 		<dependency>
 			<groupId>commons-codec</groupId>
@@ -118,8 +118,13 @@
 			<version>1.6.0</version>
 		</dependency>
 
-
-
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.31</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -150,3 +155,4 @@
 	</build>
 
 </project>
+

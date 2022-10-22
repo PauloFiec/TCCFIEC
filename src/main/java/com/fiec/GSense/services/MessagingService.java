@@ -1,4 +1,4 @@
-package com.fiec.GSense.services.impl;
+package com.fiec.GSense.services;
 
 import com.fiec.GSense.models.entities.User;
 

@@ -59,7 +59,6 @@ public class AuthController {
         HttpTransport httpTransport = new NetHttpTransport();
         JsonFactory jsonFactory = new GsonFactory();
 
-
         GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(httpTransport, jsonFactory)
                 .setAudience(Collections.singletonList(clientId))
                 .build();
@@ -77,7 +76,6 @@ public class AuthController {
             String pictureUrl = (String) payload.get("picture");
 
             UserDetails userDetails = jwtUserDetailsService.loadByEmail(email);
-
 
             String token = jwtTokenUtil.generateToken(userDetails);
             return LoginResponseDto.builder()
