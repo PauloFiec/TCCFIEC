@@ -1,7 +1,9 @@
 package com.fiec.GSense.services.impl;
 
-import com.fiec.GSense.models.entities.User;
-import com.fiec.GSense.models.repositories.UserRepository;
+import com.fiec.GSense.controllers.models.dto.AuthRequestDto;
+import com.fiec.GSense.controllers.models.entities.User;
+import com.fiec.GSense.controllers.models.repositories.UserRepository;
+import com.fiec.GSense.services.FirebaseService;
 import com.fiec.GSense.services.UserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    FirebaseService firebaseService;
 
     @Override
     public User getProfile(String userId) {
@@ -37,6 +42,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User signUpUser(String name, String email, String password, String cpfOuCnpj, String phoneNumber) {
+        firebaseService.signUp(AuthRequestDto.builder()
+                        .email(email)
+                        .password(password)
+                .build());
         return userRepository.save(
                 User.builder()
                         .name(name)
