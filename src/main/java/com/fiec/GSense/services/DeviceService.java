@@ -1,8 +1,8 @@
 package com.fiec.GSense.services;
 
-import com.fiec.GSense.models.dto.CreateDeviceRequestDto;
-import com.fiec.GSense.models.entities.Device;
-import com.fiec.GSense.models.entities.DeviceInfo;
+import com.fiec.GSense.controllers.models.dto.CreateDeviceRequestDto;
+import com.fiec.GSense.controllers.models.entities.Device;
+import com.fiec.GSense.controllers.models.entities.DeviceInfo;
 
 public interface DeviceService {
 

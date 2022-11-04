@@ -1,7 +1,7 @@
 package com.fiec.GSense.services.impl;
 
-import com.fiec.GSense.models.repositories.UserRepository;
-import com.fiec.GSense.models.entities.User;
+import com.fiec.GSense.controllers.models.repositories.UserRepository;
+import com.fiec.GSense.controllers.models.entities.User;
 import com.fiec.GSense.services.MessagingService;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.Message;

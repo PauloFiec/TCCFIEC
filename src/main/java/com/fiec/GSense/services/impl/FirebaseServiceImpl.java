@@ -1,8 +1,8 @@
 package com.fiec.GSense.services.impl;
 
-import com.fiec.GSense.models.dto.AuthRequestDto;
-import com.fiec.GSense.models.dto.FirebaseRequestDto;
-import com.fiec.GSense.models.dto.FirebaseResponseDto;
+import com.fiec.GSense.controllers.models.dto.AuthRequestDto;
+import com.fiec.GSense.controllers.models.dto.FirebaseRequestDto;
+import com.fiec.GSense.controllers.models.dto.FirebaseResponseDto;
 import com.fiec.GSense.services.FirebaseService;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;

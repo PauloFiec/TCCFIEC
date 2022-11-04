@@ -1,17 +1,9 @@
 package com.fiec.GSense.configuration;
 
-import com.fiec.GSense.models.entities.User;
-import com.fiec.GSense.models.repositories.UserRepository;
-import com.fiec.GSense.services.UserService;
+import com.fiec.GSense.controllers.models.entities.User;
+import com.fiec.GSense.controllers.models.repositories.UserRepository;
 import com.fiec.GSense.Utils.JwtTokenUtil;
-import com.google.auth.oauth2.GoogleCredentials;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
-import com.google.firebase.auth.FirebaseToken;
 import io.jsonwebtoken.ExpiredJwtException;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

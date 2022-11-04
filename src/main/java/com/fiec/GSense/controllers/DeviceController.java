@@ -2,22 +2,11 @@ package com.fiec.GSense.controllers;
 
 import com.fiec.GSense.Utils.CustomException;
 import com.fiec.GSense.Utils.ResultCodesException;
-import com.fiec.GSense.models.dto.*;
-import com.fiec.GSense.models.entities.Device;
-import com.fiec.GSense.models.entities.DeviceInfo;
+import com.fiec.GSense.controllers.models.dto.CreateDeviceRequestDto;
+import com.fiec.GSense.controllers.models.dto.DeviceDto;
 import com.fiec.GSense.services.DeviceService;
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.util.List;
 
 @RestController
 @RequestMapping("/device")

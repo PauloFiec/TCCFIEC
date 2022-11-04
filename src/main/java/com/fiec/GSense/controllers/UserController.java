@@ -2,10 +2,10 @@ package com.fiec.GSense.controllers;
 
 import com.fiec.GSense.Utils.CustomException;
 import com.fiec.GSense.Utils.ResultCodesException;
-import com.fiec.GSense.models.dto.CreateUserRequestDto;
-import com.fiec.GSense.models.dto.LoginRequestDto;
-import com.fiec.GSense.models.dto.UserDto;
-import com.fiec.GSense.models.entities.User;
+import com.fiec.GSense.controllers.models.dto.CreateUserRequestDto;
+import com.fiec.GSense.controllers.models.dto.LoginRequestDto;
+import com.fiec.GSense.controllers.models.dto.UserDto;
+import com.fiec.GSense.controllers.models.entities.User;
 import com.fiec.GSense.services.UserService;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
@@ -32,22 +32,7 @@ public class UserController {
         return userService.getAllUsers().stream().map(UserDto::convertToUserDto).collect(Collectors.toList());
     }
 
-    @PostMapping
-    public UserDto signUpUser(@RequestBody CreateUserRequestDto createUserRequestDto){
 
-        try {
-        return UserDto.convertToUserDto(userService.signUpUser(
-                createUserRequestDto.getName(),
-                createUserRequestDto.getEmail(),
-                createUserRequestDto.getPassword(),
-                createUserRequestDto.getPhoneNumber(),
-                createUserRequestDto.getCpf()
-
-        ));
-        } catch(Exception ex){
-            throw new CustomException(ResultCodesException.USER_ALREADY_EXISTS);
-        }
-    }
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody LoginRequestDto loginRequestDto){

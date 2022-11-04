@@ -1,11 +1,11 @@
 package com.fiec.GSense.services.impl;
 
-import com.fiec.GSense.models.dto.CreateDeviceRequestDto;
-import com.fiec.GSense.models.entities.Device;
-import com.fiec.GSense.models.entities.DeviceInfo;
-import com.fiec.GSense.models.entities.User;
-import com.fiec.GSense.models.repositories.DeviceRepository;
-import com.fiec.GSense.models.repositories.UserRepository;
+import com.fiec.GSense.controllers.models.dto.CreateDeviceRequestDto;
+import com.fiec.GSense.controllers.models.entities.Device;
+import com.fiec.GSense.controllers.models.entities.DeviceInfo;
+import com.fiec.GSense.controllers.models.entities.User;
+import com.fiec.GSense.controllers.models.repositories.DeviceRepository;
+import com.fiec.GSense.controllers.models.repositories.UserRepository;
 import com.fiec.GSense.services.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
