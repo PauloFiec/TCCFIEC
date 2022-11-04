@@ -1,11 +1,12 @@
 package com.fiec.GSense.controllers;
 
+import com.fiec.GSense.Utils.CustomException;
 import com.fiec.GSense.Utils.JwtTokenUtil;
-import com.fiec.GSense.models.dto.AuthRequestDto;
-import com.fiec.GSense.models.dto.LoginGoogleRequestDto;
-import com.fiec.GSense.models.dto.LoginResponseDto;
+import com.fiec.GSense.Utils.ResultCodesException;
+import com.fiec.GSense.controllers.models.dto.*;
 import com.fiec.GSense.services.FirebaseService;
 import com.fiec.GSense.services.JwtUserDetailsService;
+import com.fiec.GSense.services.UserService;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.http.HttpTransport;
@@ -35,6 +36,9 @@ public class AuthController {
     @Autowired
     JwtUserDetailsService jwtUserDetailsService;
 
+    @Autowired
+    UserService userService;
+
     @Value("${spring.security.oauth2.client.registration.google.client-id}")
     private String clientId;
 
@@ -42,8 +46,20 @@ public class AuthController {
     JwtTokenUtil jwtTokenUtil;
 
     @PostMapping("/signUp")
-    public void signUp(@RequestBody AuthRequestDto authRequestDto){
-        firebaseService.signUp(authRequestDto);
+    public UserDto signUpUser(@RequestBody CreateUserRequestDto createUserRequestDto){
+
+        try {
+            return UserDto.convertToUserDto(userService.signUpUser(
+                    createUserRequestDto.getName(),
+                    createUserRequestDto.getEmail(),
+                    createUserRequestDto.getPassword(),
+                    createUserRequestDto.getPhoneNumber(),
+                    createUserRequestDto.getCpf()
+
+            ));
+        } catch(Exception ex){
+            throw new CustomException(ResultCodesException.USER_ALREADY_EXISTS);
+        }
     }
 
     @PostMapping("/signIn")
@@ -53,6 +69,7 @@ public class AuthController {
                 .token(token)
                 .build();
     }
+
 
     @PostMapping("/loginWithGoogle")
     public LoginResponseDto signInWithGoogle(@RequestBody LoginGoogleRequestDto loginGoogleRequestDto) throws GeneralSecurityException, IOException, HttpException {
