@@ -1,11 +1,9 @@
 package com.fiec.GSense.controllers;
 
-import com.fiec.GSense.Utils.CustomException;
-import com.fiec.GSense.Utils.ResultCodesException;
-import com.fiec.GSense.controllers.models.dto.CreateUserRequestDto;
-import com.fiec.GSense.controllers.models.dto.LoginRequestDto;
-import com.fiec.GSense.controllers.models.dto.UserDto;
-import com.fiec.GSense.controllers.models.entities.User;
+import com.fiec.GSense.models.dto.CreateUserRequestDto;
+import com.fiec.GSense.models.dto.LoginRequestDto;
+import com.fiec.GSense.models.dto.UserDto;
+import com.fiec.GSense.models.entities.User;
 import com.fiec.GSense.services.UserService;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;

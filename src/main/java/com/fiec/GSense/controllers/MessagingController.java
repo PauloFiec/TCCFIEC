@@ -1,7 +1,7 @@
 package com.fiec.GSense.controllers;
 
-import com.fiec.GSense.controllers.models.dto.FcmTokenDto;
-import com.fiec.GSense.controllers.models.entities.User;
+import com.fiec.GSense.models.dto.FcmTokenDto;
+import com.fiec.GSense.models.entities.User;
 import com.fiec.GSense.services.MessagingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
