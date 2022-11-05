@@ -1,4 +1,4 @@
-package com.fiec.GSense.controllers.models.dto;
+package com.fiec.GSense.models.dto;
 
 import lombok.Builder;
 import lombok.Data;

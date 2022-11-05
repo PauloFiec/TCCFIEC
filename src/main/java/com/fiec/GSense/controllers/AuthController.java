@@ -2,8 +2,8 @@ package com.fiec.GSense.controllers;
 
 import com.fiec.GSense.Utils.CustomException;
 import com.fiec.GSense.Utils.JwtTokenUtil;
+import com.fiec.GSense.models.dto.*;
 import com.fiec.GSense.Utils.ResultCodesException;
-import com.fiec.GSense.controllers.models.dto.*;
 import com.fiec.GSense.services.FirebaseService;
 import com.fiec.GSense.services.JwtUserDetailsService;
 import com.fiec.GSense.services.UserService;
@@ -46,7 +46,7 @@ public class AuthController {
     JwtTokenUtil jwtTokenUtil;
 
     @PostMapping("/signUp")
-    public UserDto signUpUser(@RequestBody CreateUserRequestDto createUserRequestDto){
+    public UserDto signUpUser(@RequestBody CreateUserRequestDto createUserRequestDto) {
 
         try {
             return UserDto.convertToUserDto(userService.signUpUser(
@@ -57,7 +57,7 @@ public class AuthController {
                     createUserRequestDto.getCpf()
 
             ));
-        } catch(Exception ex){
+        } catch (Exception ex) {
             throw new CustomException(ResultCodesException.USER_ALREADY_EXISTS);
         }
     }
