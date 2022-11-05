@@ -2,8 +2,8 @@ package com.fiec.GSense.controllers;
 
 import com.fiec.GSense.Utils.CustomException;
 import com.fiec.GSense.Utils.ResultCodesException;
-import com.fiec.GSense.controllers.models.dto.CreateDeviceRequestDto;
-import com.fiec.GSense.controllers.models.dto.DeviceDto;
+import com.fiec.GSense.models.dto.CreateDeviceRequestDto;
+import com.fiec.GSense.models.dto.DeviceDto;
 import com.fiec.GSense.services.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -60,6 +60,9 @@ public class DeviceController {
         deviceService.deleteDevice(deviceId);
     }
 
-
+    @GetMapping("/test/{deviceNum}/{vazando}")
+    public void testVazando(@PathVariable("deviceNum") Integer deviceNum, @PathVariable("vazando") Integer vazando){
+        System.out.println(deviceNum + " : " + vazando);
+    }
 
 }

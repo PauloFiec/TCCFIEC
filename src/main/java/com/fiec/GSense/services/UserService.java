@@ -1,6 +1,6 @@
 package com.fiec.GSense.services;
 
-import com.fiec.GSense.controllers.models.entities.User;
+import com.fiec.GSense.models.entities.User;
 
 import java.util.List;
 
