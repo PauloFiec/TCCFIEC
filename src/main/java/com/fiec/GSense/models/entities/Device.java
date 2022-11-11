@@ -1,11 +1,14 @@
 package com.fiec.GSense.models.entities;
 
+import com.fiec.GSense.enums.StatusCompra;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -21,9 +24,13 @@ public class  Device {
     private Integer deviceNumber;
     private String ip;
     private Integer status;
+    private StatusCompra statusCompra;
+    private String adminEmail;
+    private String partnerId;
     //power bi
-    @ManyToOne
-    private User user;
+    @ManyToMany
+    private List<User> users = new ArrayList<>();
     @Embedded
     private DeviceInfo deviceInfo;
+
 }

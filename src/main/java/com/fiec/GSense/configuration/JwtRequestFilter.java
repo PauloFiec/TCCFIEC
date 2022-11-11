@@ -62,6 +62,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 // Spring Security Configurations successfully.
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
                 System.out.println("Unable to get JWT Token");
             } catch (ExpiredJwtException e) {
                 System.out.println("JWT Token has expired");

@@ -9,5 +9,7 @@ import java.util.Optional;
 @Repository
 public interface DeviceRepository extends JpaRepository<Device, Integer> {
 
+    Optional<Device> findByAdminEmailAndDeviceNumberAndPartnerId(String adminEmail, Integer deviceNumber, String partnerId);
+
 }
 

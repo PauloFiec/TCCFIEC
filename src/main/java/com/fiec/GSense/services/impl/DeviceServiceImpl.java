@@ -1,5 +1,6 @@
 package com.fiec.GSense.services.impl;
 
+import com.fiec.GSense.models.dto.AdminRequestDto;
 import com.fiec.GSense.models.dto.CreateDeviceRequestDto;
 import com.fiec.GSense.models.entities.Device;
 import com.fiec.GSense.models.entities.DeviceInfo;
@@ -9,6 +10,8 @@ import com.fiec.GSense.models.repositories.UserRepository;
 import com.fiec.GSense.services.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
 
 @Service
 public class DeviceServiceImpl implements DeviceService {
@@ -32,7 +35,7 @@ public class DeviceServiceImpl implements DeviceService {
                 Device.builder()
                         .deviceNumber(createDeviceRequestDto.getDeviceNumber())
                         .ip(createDeviceRequestDto.getIp())
-                        .user(currentUser)
+                        .users(Collections.singletonList(currentUser))
                         .deviceInfo(DeviceInfo.builder()
                                 .nickname(createDeviceRequestDto.getDeviceInfo().getNickname())
                                 .cep(createDeviceRequestDto.getDeviceInfo().getCep())
@@ -57,4 +60,17 @@ public class DeviceServiceImpl implements DeviceService {
 
     @Override
     public void deleteDevice(Integer deviceId) { deviceRepository.deleteById(deviceId);}
+
+    @Override
+    public void atualizaDevice(AdminRequestDto adminRequestDto) {
+        Device device =
+        deviceRepository.findByAdminEmailAndDeviceNumberAndPartnerId(
+                adminRequestDto.getEmail(),
+                adminRequestDto.getDeviceNumber(),
+                adminRequestDto.getPartnerId()
+        ).orElseThrow();
+    device.setStatusCompra(adminRequestDto.getStausCompra());
+    deviceRepository.save(device);
+    }
+
 }
