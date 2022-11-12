@@ -1,8 +1,10 @@
 package com.fiec.GSense.services.impl;
 
-import com.fiec.GSense.models.dto.AuthRequestDto;
+import com.fiec.GSense.enums.StatusCompra;
 import com.fiec.GSense.models.dto.SignUpDto;
+import com.fiec.GSense.models.entities.Device;
 import com.fiec.GSense.models.entities.User;
+import com.fiec.GSense.models.repositories.DeviceRepository;
 import com.fiec.GSense.models.repositories.UserRepository;
 import com.fiec.GSense.services.FirebaseService;
 import com.fiec.GSense.services.UserService;
@@ -11,7 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
+import java.security.SecureRandom;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -21,6 +26,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     FirebaseService firebaseService;
+
+    @Autowired
+    DeviceRepository deviceRepository;
 
     @Override
     public User getProfile(String userId) {
@@ -54,6 +62,18 @@ public class UserServiceImpl implements UserService {
         currentUser.setPassword(password);
         currentUser.setPhoneNumber(phoneNumber);
         return userRepository.save(currentUser);
+    }
+
+    @Override
+    public Integer buyDevice(User user){
+        Device device = deviceRepository.save(Device.builder()
+                        .users(Collections.singletonList(user))
+                        .statusCompra(StatusCompra.Pending)
+                        .adminEmail(user.getEmail())
+                        .deviceNumber(new SecureRandom().nextInt(1000000000))
+                .build()
+        );
+        return device.getDeviceId();
     }
 
     @Override

@@ -11,6 +11,7 @@ import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -46,10 +47,22 @@ public class UserController {
         }
     }
 
+    @PostMapping("/device")
+    public Integer buyDevice(Authentication authentication){
+        User user = (User) authentication.getPrincipal();
+        return userService.buyDevice(user);
+    }
+
     @GetMapping("/{userId}")
     public UserDto getProfile(@PathVariable("userId") String userId){
 
         return UserDto.convertToUserDto(userService.getProfile(userId));
+    }
+
+    @GetMapping("/my")
+    public UserDto getProfile(Authentication authentication){
+        User user = (User) authentication.getPrincipal();
+        return UserDto.convertToUserDto(user);
     }
 
     @PutMapping("/{userId}")

@@ -17,7 +17,7 @@ public class AdminController {
     DeviceService deviceService;
 
     @PostMapping
-    @PreAuthorize("hasRole('ROLE_SUPERADMIN')")
+    //@PreAuthorize("hasRole('ROLE_SUPERADMIN')")
     public void atualiza(@RequestBody AdminRequestDto adminRequestDto) {
         deviceService.atualizaDevice(adminRequestDto);
     }

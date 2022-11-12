@@ -8,6 +8,6 @@ public class AdminRequestDto {
     private String partnerId;
     private Integer deviceNumber;
     private String email;
-    private StatusCompra stausCompra;
+    private StatusCompra statusCompra;
 
 }

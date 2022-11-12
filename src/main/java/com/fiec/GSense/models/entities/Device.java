@@ -21,12 +21,14 @@ public class  Device {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer deviceId;
+    @Column(unique = true)
     private Integer deviceNumber;
     private String ip;
     private Integer status;
     private StatusCompra statusCompra;
     private String adminEmail;
     private String partnerId;
+    private String macAddress;
     //power bi
     @ManyToMany
     private List<User> users = new ArrayList<>();

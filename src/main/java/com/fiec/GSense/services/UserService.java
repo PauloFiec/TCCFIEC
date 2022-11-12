@@ -12,6 +12,7 @@ public interface UserService {
     User signUpUser(SignUpDto signUpDto);
     User updateUser(Integer userId, String name, String password, String phoneNumber);
 
+    Integer buyDevice(User user);
     void deleteUser(Integer userId);
 
 }

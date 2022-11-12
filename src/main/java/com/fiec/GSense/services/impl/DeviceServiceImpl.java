@@ -69,7 +69,7 @@ public class DeviceServiceImpl implements DeviceService {
                 adminRequestDto.getDeviceNumber(),
                 adminRequestDto.getPartnerId()
         ).orElseThrow();
-    device.setStatusCompra(adminRequestDto.getStausCompra());
+    device.setStatusCompra(adminRequestDto.getStatusCompra());
     deviceRepository.save(device);
     }
 

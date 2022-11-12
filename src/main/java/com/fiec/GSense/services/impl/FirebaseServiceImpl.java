@@ -36,7 +36,6 @@ public class FirebaseServiceImpl implements FirebaseService {
                 .name(signUpDto.getName())
                 .email(signUpDto.getEmail())
                 .cpfOuCnpj(signUpDto.getCpfOuCnpj())
-                .password(signUpDto.getPassword())
                 .phoneNumber(signUpDto.getPhoneNumber())
                 .userRole(signUpDto.getUserRole())
                 .build();
