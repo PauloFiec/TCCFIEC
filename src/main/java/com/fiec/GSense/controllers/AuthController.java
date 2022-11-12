@@ -4,6 +4,7 @@ import com.fiec.GSense.Utils.CustomException;
 import com.fiec.GSense.Utils.JwtTokenUtil;
 import com.fiec.GSense.models.dto.*;
 import com.fiec.GSense.Utils.ResultCodesException;
+import com.fiec.GSense.models.entities.User;
 import com.fiec.GSense.services.FirebaseService;
 import com.fiec.GSense.services.JwtUserDetailsService;
 import com.fiec.GSense.services.UserService;
@@ -64,7 +65,8 @@ public class AuthController {
 
     @PostMapping("/signIn")
     public LoginResponseDto signIn(@RequestBody AuthRequestDto authRequestDto){
-        String token = firebaseService.signIn(authRequestDto);
+        UserDetails user = firebaseService.signIn(authRequestDto);
+        String token = jwtTokenUtil.generateToken(user);
         return LoginResponseDto.builder()
                 .token(token)
                 .build();
