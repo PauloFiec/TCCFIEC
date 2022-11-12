@@ -22,7 +22,7 @@ public class FirebaseServiceImpl implements FirebaseService {
     UserRepository userRepository;
 
     @Override
-    public void signUp(SignUpDto signUpDto) {
+    public User signUp(SignUpDto signUpDto) {
         RestTemplate rt = new RestTemplate();
         FirebaseRequestDto firebaseRequestDto = FirebaseRequestDto.builder()
                 .email(signUpDto.getEmail())
@@ -40,7 +40,7 @@ public class FirebaseServiceImpl implements FirebaseService {
                 .phoneNumber(signUpDto.getPhoneNumber())
                 .userRole(signUpDto.getUserRole())
                 .build();
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 
     @Override

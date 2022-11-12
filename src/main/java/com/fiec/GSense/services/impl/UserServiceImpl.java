@@ -1,6 +1,7 @@
 package com.fiec.GSense.services.impl;
 
 import com.fiec.GSense.models.dto.AuthRequestDto;
+import com.fiec.GSense.models.dto.SignUpDto;
 import com.fiec.GSense.models.entities.User;
 import com.fiec.GSense.models.repositories.UserRepository;
 import com.fiec.GSense.services.FirebaseService;
@@ -41,20 +42,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User signUpUser(String name, String email, String password, String cpfOuCnpj, String phoneNumber) {
-        firebaseService.signUp(AuthRequestDto.builder()
-                        .email(email)
-                        .password(password)
-                .build());
-        return userRepository.save(
-                User.builder()
-                        .name(name)
-                        .email(email)
-                        .password(new String(DigestUtils.sha3_256(password), StandardCharsets.UTF_8))
-                        .phoneNumber(phoneNumber)
-                        .cpfOuCnpj(cpfOuCnpj)
-                        .build()
-        );
+    public User signUpUser(SignUpDto signUpDto) {
+        return firebaseService.signUp(signUpDto);
+
     }
 
     @Override

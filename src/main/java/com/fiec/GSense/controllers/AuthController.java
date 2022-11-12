@@ -47,17 +47,11 @@ public class AuthController {
     JwtTokenUtil jwtTokenUtil;
 
     @PostMapping("/signUp")
-    public UserDto signUpUser(@RequestBody CreateUserRequestDto createUserRequestDto) {
+    public UserDto signUpUser(@RequestBody SignUpDto signUpDto) {
 
         try {
-            return UserDto.convertToUserDto(userService.signUpUser(
-                    createUserRequestDto.getName(),
-                    createUserRequestDto.getEmail(),
-                    createUserRequestDto.getPassword(),
-                    createUserRequestDto.getPhoneNumber(),
-                    createUserRequestDto.getCpf()
-
-            ));
+            UserDto userDto =  UserDto.convertToUserDto(userService.signUpUser(signUpDto));
+            return userDto;
         } catch (Exception ex) {
             throw new CustomException(ResultCodesException.USER_ALREADY_EXISTS);
         }

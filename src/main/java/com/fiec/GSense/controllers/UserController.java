@@ -68,32 +68,32 @@ public class UserController {
 
     }
 
-    @PostMapping(value="/csv", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public void createBulkOfUsers(@RequestParam("csvFile") MultipartFile multipartFile ) throws IOException {
-        BufferedReader fileReader = new BufferedReader(new InputStreamReader(multipartFile.getInputStream(), "UTF-8"));
-        final int NAME=0, EMAIL=1, PASSWORD=2, PHONENUMBER=3, CPFOUCNPJ=4;
-        try (Reader reader = fileReader) {
-            try (CSVReader csvReader = new CSVReader(reader)) {
-                List<String[]> csvFields =  csvReader.readAll();
-                for(int i=1; i<csvFields.size(); i++){
-                    User newUser = User.builder()
-                            .email(csvFields.get(i)[EMAIL])
-                            .name(csvFields.get(i)[NAME])
-                            .password(csvFields.get(i)[PASSWORD])
-                            .phoneNumber(csvFields.get(i)[PHONENUMBER])
-                            .cpfOuCnpj(csvFields.get(i)[CPFOUCNPJ])
-                            .build();
-                    userService.signUpUser(newUser.getName(),
-                            newUser.getEmail(),
-                            newUser.getPassword(),
-                            newUser.getPhoneNumber(),
-                            newUser.getCpfOuCnpj());
-                }
-            } catch (CsvException e) {
-                throw new RuntimeException(e);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    @PostMapping(value="/csv", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public void createBulkOfUsers(@RequestParam("csvFile") MultipartFile multipartFile ) throws IOException {
+//        BufferedReader fileReader = new BufferedReader(new InputStreamReader(multipartFile.getInputStream(), "UTF-8"));
+//        final int NAME=0, EMAIL=1, PASSWORD=2, PHONENUMBER=3, CPFOUCNPJ=4;
+//        try (Reader reader = fileReader) {
+//            try (CSVReader csvReader = new CSVReader(reader)) {
+//                List<String[]> csvFields =  csvReader.readAll();
+//                for(int i=1; i<csvFields.size(); i++){
+//                    User newUser = User.builder()
+//                            .email(csvFields.get(i)[EMAIL])
+//                            .name(csvFields.get(i)[NAME])
+//                            .password(csvFields.get(i)[PASSWORD])
+//                            .phoneNumber(csvFields.get(i)[PHONENUMBER])
+//                            .cpfOuCnpj(csvFields.get(i)[CPFOUCNPJ])
+//                            .build();
+//                    userService.signUpUser(newUser.getName(),
+//                            newUser.getEmail(),
+//                            newUser.getPassword(),
+//                            newUser.getPhoneNumber(),
+//                            newUser.getCpfOuCnpj());
+//                }
+//            } catch (CsvException e) {
+//                throw new RuntimeException(e);
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 }
