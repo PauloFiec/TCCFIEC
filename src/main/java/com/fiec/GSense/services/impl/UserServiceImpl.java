@@ -1,8 +1,10 @@
 package com.fiec.GSense.services.impl;
 
 import com.fiec.GSense.enums.StatusCompra;
+import com.fiec.GSense.models.dto.DeviceInfoDto;
 import com.fiec.GSense.models.dto.SignUpDto;
 import com.fiec.GSense.models.entities.Device;
+import com.fiec.GSense.models.entities.DeviceInfo;
 import com.fiec.GSense.models.entities.User;
 import com.fiec.GSense.models.repositories.DeviceRepository;
 import com.fiec.GSense.models.repositories.UserRepository;
@@ -65,11 +67,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer buyDevice(User user){
+    public Integer buyDevice(User user, DeviceInfo deviceInfo){
         Device device = deviceRepository.save(Device.builder()
                         .users(Collections.singletonList(user))
                         .statusCompra(StatusCompra.Pending)
                         .adminEmail(user.getEmail())
+                        .deviceInfo(deviceInfo)
                         .deviceNumber(new SecureRandom().nextInt(1000000000))
                 .build()
         );

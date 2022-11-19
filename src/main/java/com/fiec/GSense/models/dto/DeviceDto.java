@@ -19,6 +19,7 @@ public class DeviceDto {
     List<Integer> userIds;
     DeviceInfo deviceInfo;
     StatusCompra statusCompra;
+    Integer status;
 
     public static DeviceDto convertToDeviceDto(Device device) {
         return DeviceDto.builder()
@@ -28,6 +29,7 @@ public class DeviceDto {
                 .userIds(device.getUsers().stream().map(User::getId).collect(Collectors.toList()))
                 .deviceInfo(device.getDeviceInfo())
                 .statusCompra(device.getStatusCompra())
+                .status(device.getStatus())
                 .build();
     }
 }

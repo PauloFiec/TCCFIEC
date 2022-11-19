@@ -1,5 +1,6 @@
 package com.fiec.GSense.services.impl;
 
+import com.fiec.GSense.enums.StatusCompra;
 import com.fiec.GSense.models.dto.AdminRequestDto;
 import com.fiec.GSense.models.dto.CreateDeviceRequestDto;
 import com.fiec.GSense.models.entities.Device;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.Optional;
 
 @Service
 public class DeviceServiceImpl implements DeviceService {
@@ -34,8 +36,9 @@ public class DeviceServiceImpl implements DeviceService {
         return deviceRepository.save(
                 Device.builder()
                         .deviceNumber(createDeviceRequestDto.getDeviceNumber())
-                        .ip(createDeviceRequestDto.getIp())
                         .users(Collections.singletonList(currentUser))
+                        .statusCompra(StatusCompra.Pending)
+
                         .deviceInfo(DeviceInfo.builder()
                                 .nickname(createDeviceRequestDto.getDeviceInfo().getNickname())
                                 .cep(createDeviceRequestDto.getDeviceInfo().getCep())
@@ -72,5 +75,13 @@ public class DeviceServiceImpl implements DeviceService {
     device.setStatusCompra(adminRequestDto.getStatusCompra());
     deviceRepository.save(device);
     }
+
+    @Override
+    public void testeVazando(Integer deviceId, Integer vazando) {
+        Device device = deviceRepository.findById(deviceId).orElseThrow();
+        device.setStatus(vazando);
+        deviceRepository.save(device);
+    }
+
 
 }

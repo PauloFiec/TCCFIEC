@@ -1,8 +1,10 @@
 package com.fiec.GSense.controllers;
 
 import com.fiec.GSense.models.dto.CreateUserRequestDto;
+import com.fiec.GSense.models.dto.DeviceInfoDto;
 import com.fiec.GSense.models.dto.LoginRequestDto;
 import com.fiec.GSense.models.dto.UserDto;
+import com.fiec.GSense.models.entities.DeviceInfo;
 import com.fiec.GSense.models.entities.User;
 import com.fiec.GSense.services.UserService;
 import com.opencsv.CSVReader;
@@ -48,9 +50,9 @@ public class UserController {
     }
 
     @PostMapping("/device")
-    public Integer buyDevice(Authentication authentication){
+    public Integer buyDevice(Authentication authentication, @RequestBody DeviceInfo deviceInfo){
         User user = (User) authentication.getPrincipal();
-        return userService.buyDevice(user);
+        return userService.buyDevice(user, deviceInfo);
     }
 
     @GetMapping("/{userId}")

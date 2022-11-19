@@ -17,4 +17,6 @@ public interface DeviceService {
     void deleteDevice(Integer deviceId);
 
     void atualizaDevice(AdminRequestDto adminRequestDto);
+
+    void testeVazando(Integer deviceId, Integer vazando);
 }
